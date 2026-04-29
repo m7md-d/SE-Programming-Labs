@@ -7,9 +7,11 @@ hakam = ["global", "local"]
 
 # --------------------------------
 print("Welcome to our program!\n")
-
+x = 0
 while True:
-    x = int(input("Enter 16 bit number: "), 0)
+    x = int(input("Enter 16 bit number or -1 to exit: "), 0)
+    if x < 0:
+        exit()
 
     # Unpack the values
     club1 = x & 0b0000_0000_0001_1111
@@ -21,10 +23,12 @@ while True:
 
     # Error handling
     if club1 >= 18 or club2 >= 18:
-        exit("ValueError: The club number must be (0-17)")
+        print("ValueError: The club number must be (0-17)")
+        continue
 
     if club1 == club2:
-        exit("LogicalError: The club cannot play against itself")
+        print("LogicalError: The club cannot play against itself")
+        continue
 
     print("Your match result is:")
     print("Fisrt team:", club[club1])
